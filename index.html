@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main>
+      <input type="text" class="input-new-task" placeholder="New task..." />
+      <input type="button" value="Add" class="btn add" />
+      <div class="all-tasks">
+        <div class="congratulations hidden">
+          <div>🎊</div>
+          <div>All done!</div>
+        </div>
+        <div class="no-tasks hidden">
+          <div>You don't have tasks to do.</div>
+        </div>
+
+        <div class="uncompleted-tasks">
+          <div class="task">
+            <input type="checkbox" id="checkbox" class="checkbox" />
+            <p class="task--text">First task</p>
+            <button class="dump">🗑</button>
+          </div>
+          <div class="task">
+            <input type="checkbox" id="checkbox" class="checkbox" />
+            <p class="task--text">Second task</p>
+            <button class="dump">🗑</button>
+          </div>
+        </div>
+        <div class="barrier">
+          <div class="hr"></div>
+          <span class="percent-completed">
+            <span class="comlete-tasks-count">0</span>/
+            <span class="all-tasks-count">2</span>(
+            <span class="percentage">0%</span>
+            done)
+          </span>
+        </div>
+        <div class="completed-tasks"></div>
+      </div>
+    </main>
+    <div class="modal-window hidden">
+      <button class="close-modal-window">&times;</button>
+      <h1 class="delete-task-text">Are you sure you want to delete task?</h1>
+      <button class="btn delete-task-yes">Yes</button>
+      <button class="btn delete-task-no">No</button>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <script src="js/script.js" defer></script>
+  </body>
+</html>
