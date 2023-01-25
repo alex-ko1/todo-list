@@ -24,6 +24,28 @@ const barrier = document.querySelector(".barrier");
 
 let allTasks = compltdTask.children.length + unCompltdTask.children.length;
 
+let taskText = [];
+
+const allTasksText = function () {
+  for (let i = 0; i < tasks.length; i++) {
+    taskText[i] = tasks[i].querySelector(".task--text").textContent;
+
+    if (checkboxes[i].checked) {
+      taskText[i] = taskText[i].concat("+");
+    } else {
+      taskText[i] = taskText[i].concat("-");
+    }
+  }
+  //   let json = JSON.stringify(taskText);
+  //   alert(json);
+  let json = JSON.stringify(taskText);
+
+  let btoa = window.btoa(json);
+  console.log(window.atob(btoa));
+  //window.atob("eyJ0aXRsZSI6IlRhc2sgMSJ9");
+  //JSON.parse('{"title":"Task 1"}');
+};
+
 // Calculating the percentage of completed tasks.
 const percentIsCompelete = function () {
   let a =
@@ -50,7 +72,7 @@ const percentIsCompelete = function () {
 };
 percentIsCompelete();
 
-// Function for adding new task.
+//  Adding new task.
 const addTask = function () {
   let inputTask = document.querySelector(".input-new-task");
 
@@ -60,9 +82,8 @@ const addTask = function () {
     task.innerHTML = `<input type="checkbox" id="checkbox" class="checkbox">
                         <p class='task--text'></p>
                         <button class="dump">🗑</button>`;
-    //console.log(task);
 
-    task.children[1].textContent = inputTask.value;
+    task.querySelector(".task--text").textContent = inputTask.value;
     unCompltdTask.append(task);
 
     checkboxes = document.querySelectorAll(".checkbox");
@@ -78,6 +99,10 @@ const addTask = function () {
     showModalWindow();
 
     funcDeleteTask();
+
+    allTasksText();
+
+    console.log(taskText);
 
     congratulations.classList.add("hidden");
     noTasks.classList.add("hidden");
@@ -117,10 +142,12 @@ const isCompelete = function () {
     if (e.target.checked) {
       e.path[1].children[1].classList.add("checked");
       compltdTask.prepend(e.path[1]);
+
       percentIsCompelete();
     } else {
       e.path[1].children[1].classList.remove("checked");
       unCompltdTask.append(e.path[1]);
+
       percentIsCompelete();
     }
     if (unCompltdTask.children.length == 0) {
@@ -132,7 +159,7 @@ const isCompelete = function () {
 };
 isCompelete();
 
-//  Func for close modal window.
+//  Close modal window.
 const closeModalWindow = function () {
   modalWindow.classList.add("hidden");
   overlay.classList.add("hidden");
@@ -167,7 +194,7 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-// Function to delete tasks.
+// Delete task.
 const funcDeleteTask = function () {
   deleteTask.addEventListener("click", function () {
     for (let i = 0; i < tasks.length; i++) {
@@ -194,6 +221,7 @@ noDeleteTask.addEventListener("click", closeModalWindow);
 
 // document.addEventListener("click", function (e) {
 //   console.log(e.target);
+//   console.log(this);
 // });
 
 // const isCompelete = function() {
