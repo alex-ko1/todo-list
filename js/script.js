@@ -1,5 +1,6 @@
 "use strict";
 
+// Initialise variables
 const unCompltdTask = document.querySelector(".uncompleted-tasks");
 const compltdTask = document.querySelector(".completed-tasks");
 let checkboxes = document.querySelectorAll(".checkbox");
@@ -115,6 +116,8 @@ document.querySelector(".add").addEventListener("click", function () {
 
 const noTasks = document.querySelector(".no-tasks");
 const congratulations = document.querySelector(".congratulations");
+
+// Function with bugs
 // const isCompelete = function () {
 //   for (let i = 0; i < checkboxes.length; i++) {
 //     checkboxes[i].addEventListener("change", function () {
